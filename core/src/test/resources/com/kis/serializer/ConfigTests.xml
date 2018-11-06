@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Parent>
+    <child_ type="Alex" String="Yasik">
+        <child__ type="Alex" String="Yasik">
+            <child___ type="Alex" String="Yasik">
+                <child____ type="Alex" String="Yasik"><![CDATA[Text]]></child____>
+            </child___>
+        </child__>
+    </child_>
+</Parent>

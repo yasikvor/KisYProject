@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.TreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="740.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kis.view.TreeNodeView">
+   <children>
+      <SplitPane dividerPositions="0.3131115459882583" layoutX="127.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="738.0" prefWidth="368.0">
+               <children>
+                  <TreeView fx:id="treeView" layoutX="46.0" layoutY="47.0" minWidth="400.0" prefHeight="951.0" prefWidth="591.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                              <MenuItem fx:id="loadFullDatabase" mnemonicParsing="false" text="Load schema" />
+                              <MenuItem fx:id="reload" mnemonicParsing="false" text="Reload" />
+                              <MenuItem fx:id="createSql" mnemonicParsing="false" text="Create SQL..." />
+                          </items>
+                        </ContextMenu>
+                     </contextMenu></TreeView>
+                  <Button layoutX="264.0" layoutY="14.0" mnemonicParsing="false" onAction="#search" text="Search" AnchorPane.rightAnchor="14.0" />
+                  <TextField fx:id="searchTextField" layoutX="105.0" layoutY="14.0" prefHeight="25.0" prefWidth="143.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="76.0" />
+                  <ProgressIndicator fx:id="loadIndicator" layoutX="290.0" layoutY="54.0" prefHeight="25.0" prefWidth="24.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="54.0" />
+                  <Button fx:id="returnTree" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="86.0" text="Reset filter" AnchorPane.leftAnchor="14.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="828.0" prefWidth="649.0">
+               <children>
+                  <SplitPane dividerPositions="0.5" prefHeight="738.0" prefWidth="728.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <items>
+                        <TitledPane fx:id="scriptTitledPane" animated="false" prefHeight="1024.0" prefWidth="360.0" text="SQL script">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane fx:id="propertyTitledPane" animated="false" prefHeight="1024.0" prefWidth="360.0" text="Properties">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                           <content>
+                              <TableView fx:id="tableView" prefHeight="691.0" prefWidth="360.0">
+                                <columns>
+                                  <TableColumn fx:id="attributeColumn" prefWidth="152.0" text="Attribute" />
+                                  <TableColumn fx:id="valueColumn" prefWidth="207.0" text="Value" />
+                                </columns>
+                              </TableView>
+                           </content>
+                        </TitledPane>
+                     </items>
+                  </SplitPane>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

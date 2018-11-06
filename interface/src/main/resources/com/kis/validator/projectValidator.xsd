@@ -1,0 +1,317 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element type="Column">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute  type="IS_NULLABLE" use="optional">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="YES"/>
+                                <xs:enumeration value="NO"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" type="COLUMN_DEFAULT" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="EXTRA" use="optional"/>
+                    <xs:attribute type="xs:string" type="COLUMN_TYPE" use="optional" />
+                    <xs:attribute type="xs:string" type="NAME" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Primary">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="INDEX_NAME" use="optional"/>
+                    <xs:attribute type="xs:string" type="NAME" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Unique">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="INDEX_NAME" use="optional"/>
+                    <xs:attribute type="xs:string" type="NAME" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Trigger">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="EVENT_MANIPULATION">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="INSERT"/>
+                                <xs:enumeration value="UPDATE"/>
+                                <xs:enumeration value="DELETE"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+
+                    <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="ACTION_ORIENTATION"/>
+                    <xs:attribute type="ACTION_TIMING">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="BEFORE"/>
+                                <xs:enumeration value="AFTER"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute type="xs:string" type="NAME"/>
+                    <xs:attribute type="xs:string" type="ACTION_STATEMENT"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Columns">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Column" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Indexes">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="Unique" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="Primary" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="Key" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element type="Constraints">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Constraint" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element type="Constraint">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="REFERENCED_TABLE_NAME" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                    <xs:attribute type="xs:string" type="COLUMN_NAME" use="optional"/>
+                    <xs:attribute type="xs:string" type="REFERENCED_COLUMN_NAME" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="NAME" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element type="Triggers">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="Trigger" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Key">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="INDEX_NAME" use="optional"/>
+                    <xs:attribute type="xs:string" type="NAME" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Expanding...">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Table">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Columns" minOccurs="0"/>
+                <xs:element ref="Indexes" minOccurs="0"/>
+                <xs:element ref="Constraints" minOccurs="0"/>
+                <xs:element ref="Triggers" minOccurs="0"/>
+                <xs:element ref="Expanding..." maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_LOADED" use="optional"/>
+            <xs:attribute type="xs:string" type="ENGINE" use="optional"/>
+            <xs:attribute type="xs:string" type="TABLE_COLLATION" use="optional"/>
+            <xs:attribute type="xs:string" type="NAME" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="View">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Column" maxOccurs="unbounded" minOccurs="0"/>
+                <xs:element ref="Expanding..." maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+            <xs:attribute type="xs:string" type="DEFINER" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_LOADED" use="optional"/>
+            <xs:attribute type="xs:string" type="VIEW_DEFINITION" use="optional"/>
+            <xs:attribute type="xs:string" type="NAME" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Parameter">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="PARAMETER_MODE" use="optional">
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:enumeration value="IN"/>
+                                <xs:enumeration value="OUT"/>
+                                <xs:enumeration value="INOUT"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+
+                    <xs:attribute type="xs:string" type="DTD_IDENTIFIER" use="optional"/>
+                    <xs:attribute type="xs:string" type="NAME" use="optional"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Procedure">
+        <xs:complexType mixed="true">
+            <xs:sequence>
+                <xs:element ref="Expanding..." minOccurs="0"/>
+                <xs:element ref="Parameter" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+            <xs:attribute type="xs:string" type="DEFINER" use="optional"/>
+            <xs:attribute type="xs:string" type="ROUTINE_DEFINITION" use="optional"/>
+            <xs:attribute type="xs:string" type="NAME" use="optional"/>
+            <xs:attribute type="xs:string" type="IS_LOADED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Return">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+                    <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+                    <xs:attribute type="xs:string" type="DTD_IDENTIFIER"/>
+                    <xs:attribute type="xs:string" type="SPECIFIC_SCHEMA"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Function">
+        <xs:complexType>
+            <xs:sequence >
+                <xs:element ref="Expanding..." minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="Return" minOccurs="0" maxOccurs="1"/>
+                <xs:element ref="Parameter" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+            <xs:attribute type="xs:string" type="DEFINER"/>
+            <xs:attribute type="xs:string" type="IS_LOADED" use="optional"/>
+
+            <xs:attribute type="xs:string" type="ROUTINE_DEFINITION"/>
+            <xs:attribute type="xs:string" type="NAME"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Tables">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Table" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Views">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="View" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Procedures">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Procedure" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Functions">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Function" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Connection">
+        <xs:complexType>
+            <xs:simpleContent>
+                <xs:extension base="xs:string">
+                    <xs:attribute type="xs:string" type="User"/>
+                    <xs:attribute type="xs:string" type="Url"/>
+                </xs:extension>
+            </xs:simpleContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Database">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Tables"/>
+                <xs:element ref="Views"/>
+                <xs:element ref="Procedures"/>
+                <xs:element ref="Functions"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" type="IS_EXPANDED"/>
+            <xs:attribute type="xs:string" type="IS_SELECTED" use="optional"/>
+            <xs:attribute type="xs:string" type="NAME"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element type="Project">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Connection"/>
+                <xs:element ref="Database"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

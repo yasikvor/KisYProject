@@ -1,0 +1,9 @@
+<Servers>
+    <Server NAME="dev-mysql.cjj06khxetlc.us-west-2.rds.amazonaws.com">
+        <Port NAME="3306">
+            <Schema NAME="test_mysql_mysql">
+                <User NAME="min_privs"/>
+            </Schema>
+        </Port>
+    </Server>
+</Servers>

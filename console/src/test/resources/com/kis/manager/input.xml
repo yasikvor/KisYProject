@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<company>
+    <consoleApp>
+        <fileName value="AWSSchemaConversionToolBatch.jar" />
+        <fileFolder value="run/console/" />
+    </consoleApp>
+    <batchFile>
+        <fileName value="batch501.xml" />
+        <fileFolder value="run\console\" />
+    </batchFile>
+    <projectPath value="run/TargetPro/MSSQL16-PostgreSQL/MSSQL16-PostgreSQL.sct" />
+    <logFilePath value="run\reports\MSSQL16-PostgreSQL\MSSQL16-PostgreSQL_convert.csv" />
+    <testListFile value="run\test-lists\test-list-postgre_mssql-all.csv" />
+    <reference-file value="run/references/MSSQL_PostgreEtalonConvert.xml" />
+    <objectsDefinitions>
+        <procedure />
+        <trigger />
+        <index />
+        <constraint />
+        <view />
+        <function />
+        <table />
+        <SEQUENCE />
+        <SYNONYM />
+    </objectsDefinitions>
+    <sqlIgnoreCase value="true" />
+    <allowComments value="false" />
+    <addNamedReport value="false" />
+    <attribute-allow-list>
+        <table type="" context="" />
+        <category order-num="" type="" child-type="" />
+        <column ordinal-position="" nullable="" dt-type="" context="" type="" dt-attr-1="" table-type="" />
+        <index type="" context="" />
+        <trigger type="" />
+        <constraint update-rule="" constraint-type-desc="" constraint-type="" type="" context="" table-type="" delete-rule="" />
+        <procedure database-collation="" character-set-client="" collation-connection="" type="" context="" />
+        <complex-attribute type="" />
+        <view type="" context="" />
+        <function type="" context="" />
+        <category order-num="" type="" child-type="" />
+        <parameter ordinal-position="" dt-type="" type="" context="" parameter-mode="" />
+        <SEQUENCE type="" context="" />
+        <SYNONYM type="" context="" />
+    </attribute-allow-list>
+    <referenceSchema value="Schemas.gold_test_ss_pg_dbo" />
+    <sourceSchema value="Databases.GOLD_TEST_SS_PG.Schemas.dbo" />
+    <targetSchema value="Schemas.gold_test_ss_pg_dbo" />
+    <sourceConnection>
+        <vendor value="MSSQL" />
+        <connectionString value="ec2-52-37-30-252.us-west-2.compute.amazonaws.com" />
+        <login value="min_privs" />
+        <password value="min_privs" />
+        <port value="1455" />
+        <sourceVendor value="MSSQL" />
+    </sourceConnection>
+    <targetConnection>
+        <vendor value="test_ora_pg" />
+        <connectionString value="postgresql-9-6-1.cjj06khxetlc.us-west-2.rds.amazonaws.com" />
+        <login value="min_privs" />
+        <password value="min_privs" />
+        <port value="5432" />
+        <targetVendor value="POSTGRESQL" />
+    </targetConnection>
+</company>
+

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.BorderPane?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="800.0" prefHeight="740.0" prefWidth="1066.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kis.view.RootView">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu fx:id="menu" mnemonicParsing="false" text="File">
+            <items>
+                <MenuItem fx:id="newProject" mnemonicParsing="false" onAction="#newConnection" text="Create Project..." />
+                  <MenuItem fx:id="openProject" mnemonicParsing="false" onAction="#openProject" text="Open Project..." />
+                  <MenuItem fx:id="saveProject" mnemonicParsing="false" onAction="#saveProject" text="Save Project..." />
+                <MenuItem fx:id="connect" mnemonicParsing="false" onAction="#connect" text="Connect..." />
+                  <MenuItem fx:id="closeProject" mnemonicParsing="false" onAction="#closeProject" text="Close Project" />
+                  <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exitProgram" text="Exit" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Action">
+              <items>
+
+                <MenuItem fx:id="loadFullDatabase" mnemonicParsing="false" text="Load schema" />
+                  <MenuItem fx:id="reload" mnemonicParsing="false" text="Reload" />
+                  <MenuItem fx:id="createSql" mnemonicParsing="false" text="Create SQL..." />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Settings">
+               <items>
+                  <MenuItem mnemonicParsing="false" onAction="#showSettings" text="Open" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem  mnemonicParsing="false" text="Help" />
+                  <MenuItem  mnemonicParsing="false" onAction="#showAbout" text="About" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
